@@ -26,17 +26,17 @@ public class Dictionary {
         for (int i = 0; i <= a.length(); i++) {
             for (int j = 0; j <= b.length(); j++) {
                 if (i == 0) {
-                    dp[i][j] = j; // всі символи b вставити
+                    dp[i][j] = j; 
                 } else if (j == 0) {
-                    dp[i][j] = i; // всі символи a видалити
+                    dp[i][j] = i; 
                 } else if (a.charAt(i - 1) == b.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1]; // символи збігаються
+                    dp[i][j] = dp[i - 1][j - 1]; 
                 } else {
                     dp[i][j] = 1 + Math.min(
-                        dp[i - 1][j],    // видалення
+                        dp[i - 1][j],   
                         Math.min(
-                            dp[i][j - 1],    // вставка
-                            dp[i - 1][j - 1] // заміна
+                            dp[i][j - 1],    
+                            dp[i - 1][j - 1] 
                         )
                     );
                 }
@@ -48,14 +48,13 @@ public class Dictionary {
 
     public static void main(String[] args) {
         Dictionary fruits = new Dictionary(new String[]{"cherry", "pineapple", "melon", "strawberry", "raspberry"});
-        System.out.println(fruits.findMostSimilar("strawbery")); // strawberry
-        System.out.println(fruits.findMostSimilar("berry"));     // cherry
-
+        System.out.println(fruits.findMostSimilar("strawbery"));
+        System.out.println(fruits.findMostSimilar("berry"));     
         Dictionary things = new Dictionary(new String[]{"stars", "mars", "wars", "codec", "codewars"});
-        System.out.println(things.findMostSimilar("coddwars"));  // codewars
+        System.out.println(things.findMostSimilar("coddwars"));  
 
         Dictionary languages = new Dictionary(new String[]{"javascript", "java", "ruby", "php", "python", "coffeescript"});
-        System.out.println(languages.findMostSimilar("heaven"));     // java
-        System.out.println(languages.findMostSimilar("javascript")); // javascript
+        System.out.println(languages.findMostSimilar("heaven"));     
+        System.out.println(languages.findMostSimilar("javascript")); 
     }
 }
